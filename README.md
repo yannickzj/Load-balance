@@ -25,3 +25,9 @@ In order to control the buffer size, the message queue size is explicitly initia
 <p><img src="/README/blockedTime.png" width="700"></p>
 ![Alt text](/README/blockedTime.png)
 
+![equation](http://latex.codecogs.com/gif.latex? x=\\frac{b\\pm\\sqrt{b^2-4ac}}{2a_1})
+
+![equation](http://latex.codecogs.com/gif.latex? x=\\frac{5+4+(2-3-(6+\\frac{4}{5}))}{3(6-2)(2-7)})
+
+
+
