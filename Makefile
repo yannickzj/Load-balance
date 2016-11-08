@@ -1,13 +1,31 @@
-PROGRAMS	= server_shm server_msq process_producer process_consumer
+CC = gcc
+CFLAGS = -lpthread -lm
 
-# Link programs with the pthread library.
-LDLIBS		+= -lpthread -lm
+DIR_SRC = ./src
+DIR_BUILD = ./bin
 
-.PHONY:         all clean
+SRC = $(wildcard ${DIR_SRC}/*.c)
+OBJ = $(patsubst %.c,${DIR_BUILD}/%.o,$(notdir ${SRC}))
 
-# build programs 
-all:            $(PROGRAMS) 
+TARGET = $(patsubst %.c,${DIR_BUILD}/% ,$(notdir ${SRC}))
+
+
+.PHONY: all clean
+
+#build programs
+all: $(DIR_BUILD) $(TARGET)
+
+$(DIR_BUILD):
+	mkdir $(DIR_BUILD)
+
+${DIR_BUILD}/% :${DIR_BUILD}/%.o
+	$(CC) $(CFLAGS) $< -o $@
+
+${DIR_BUILD}/%.o: ${DIR_SRC}/%.c
+	$(CC) -c $< -o $@
 
 # Clean up build products.
 clean:
-	rm -f *.o *.txt* $(PROGRAMS) 
+	rm -r -f $(DIR_BUILD) *.txt
+
+

@@ -141,7 +141,7 @@ int main(int argc, char* argv[]) {
 	shared_memory->timeIdle = 0.0;
 
 	//set producer process arguments
-	char* producerFile = (char*) "./process_producer";
+	char* producerFile = (char*) "./bin/process_producer";
 	char msqkeyText[20];
 	sprintf(msqkeyText, "%d", key_msq);
 	char semkeyText[20];
@@ -164,7 +164,7 @@ int main(int argc, char* argv[]) {
 	};
 
 	//set consumer process arguments
-	char* consumerFile = (char*) "./process_consumer";
+	char* consumerFile = (char*) "./bin/process_consumer";
 	char* consumer_argv[] = {
 		consumerFile,
 		argv[7],
