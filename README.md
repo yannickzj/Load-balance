@@ -21,3 +21,7 @@ In current design, two extra semaphores, **empty** and **full** with initializat
 As for the inter-process message passing approach, message queue facilities are used to establish the communication between the producer and the consumer. A process semaphore with two semaphore values (both are initially set to 1) is used to coordinate the producers and the consumers in the same way as the multi-thread communication. 
 
 In order to control the buffer size, the message queue size is explicitly initialized with `B` bytes and set the msgflg with default value in the producer process such that the producer will be blocked if insufficient space is available in the message queue; On the other hand, the consumer uses `msgrcv()` to receive data without specifying `IPC_NOWAIT` in the msgflg, then the process will be automatically blocked if no message is available in the queue.
+
+<p><img src="https://raw.github.com/yannickzj/Load-balance/README/blockedTime.png" width="100"></p>
+<p><img src="/Load-balance/README/blockedTime.png" width="100"></p>
+
