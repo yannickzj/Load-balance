@@ -60,7 +60,7 @@ proportional to the balance factor. While as the producer number keep increasing
 Since communication via threads is generally more efficient than that via processes, it reasonable that multi-thread transmission can obtain greater processed request numbers per second than the multi-process approach.
 
 <p align="center">
-<br/><img src="/README/qnum.png" width="700">
+<br/><img src="/README/qnum.png" width="600">
 <br/>Figure1. Average number of processed requests per second for both approaches
 </p>
 
@@ -69,20 +69,20 @@ Since communication via threads is generally more efficient than that via proces
 For both two approaches(Figure2), the producers are rarely blocked as the balance factor is less than 1.0. However, when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) grows greater than 1.0, the producers are frequently blocked. Therefore, an equilibrium point can be observed when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) =1.0, where the producers are blocked and the consumer are idle for few times and for reasonable little amount of time.
 
 <p align="center">
-<br/><img src="/README/blockedTime.png" width="700">
+<br/><img src="/README/blockedTime.png" width="600">
 <br/>Figure2. Average producer blocked time(per second) for both approaches
 </p>
 
 In order to have a better understanding of this equilibrium point, the variation of request number in the buffer is observed and presented in Figure 3 and Figure 4. When the balance factor is equal to 1.0, the request quantity fluctuates between the upper and lower bound of the buffer size and seldom reaches the “top” or “bottom” of the buffer; But as the balance factor becomes greater than or less than 1.0, this equilibrium breaks and the request number in the buffer will frequently reach the buffer limits, resulting in blocked producers or idle consumers. This point can also be considered as the system full-load state because extra increase of request rate will lead to significant increase of blocked producers.
 
 <p align="center">
-<br/><img src="/README/timehistory_shm.png" width="700">
+<br/><img src="/README/timehistory_shm.png" width="600">
 <br/>Figure3. Time-history variation of request number in the buffer for multi-thread approach
 <br/>(where lambda_b in the legend is the balance factor)
 </p>
 
 <p align="center">
-<br/><img src="/README/timehistory_msq.png" width="700">
+<br/><img src="/README/timehistory_msq.png" width="600">
 <br/>Figure4. Time-history variation of request number in the buffer for multi-process approach
 <br/>(where lambda_b in the legend is the balance factor)
 </p>
