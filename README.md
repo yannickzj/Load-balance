@@ -10,7 +10,7 @@ To emulate this, a produce function is defined for the producers to issue a new 
 
 On a Linux platform, the execution command will follow the form as below:
 ```
-./server_approachChoice <T> <B> <P> <C> <P_t parms> <R_s parms> <C_t1 parms> <C_t2 parms> <p_i>
+./server_<approachChoice> <T> <B> <P> <C> <P_t parms> <R_s parms> <C_t1 parms> <C_t2 parms> <p_i>
 ```
 where \<T> is the amount of time for which the system should execute, in sexonds, \<B> is a parameter specifying the size (in bytes) of the shared memory space/shared message-queue size, \<P> is the number of producers, \<C> is the number of consumers, \<P_t parms> is the parmeters related to the probabiity distribution for the random time *`Pt`* that the producers must wait between request productions, \<R_s parms> is the parameters related to the probability distribution of the request size, \<C_t1 parms> is the parmeters related to the probabiity distribution for the random time *`Ct1`* that the consumers take with probability *`p_i`*, \<C_t2 parms> is the parmeters related to the probabiity distribution for the random time *`Ct2`* that the consumers take with probability *`1-p_i`*, and \<p_i> is the probability *`p_i`*.
 
