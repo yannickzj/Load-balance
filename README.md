@@ -6,13 +6,15 @@ This is a mini project of a graduate course, which aims to simulate load balanci
 ## Project Requirements
 In this project, it is required to solve the multi-producer/multi-consumer problem with a bounded buffer using the above approaches. In the context of a typical software server, the producers are considered as being entities that are receivinig requests and consumers are thought of as entities that will process the request and generate a reply.
 
-To emulate this, a produce function is defined for the producers to issue a new request for the consumers after a random delay `Pt`. The size of the request to be transmitted to the consumers is `Rs`, which is also randomly distributed. Similarly, a consume function is defined for the consumers to complete the task after a random time period. However, this time period is more complex, which is depending on whether the work requests need IO operations. Therefore, the paremeter `pi` is defined as the probability that the work requires IO. There will be two randomly distributed consumer time values, `Ct1` and `Ct2`, where the first is chosen with probability `pi` and otherwise the second is chosen. In addition, `B` is defined as the buffer size that producers may send without consumers having consumed them before producers must stop producing.
+To emulate this, a produce function is defined for the producers to issue a new request for the consumers after a random delay `Pt`. The size of the request to be transmitted to the consumers is `Rs`, which is also randomly distributed. Similarly, a consume function is defined for the consumers to complete the task after a random time period. However, this time period is more complex, which is depending on whether the work requests need IO operations. Therefore, the paremeter `p_i` is defined as the probability that the work requires IO. There will be two randomly distributed consumer time values, `Ct1` and `Ct2`, where the first is chosen with probability `p_i` and otherwise the second is chosen. In addition, `B` is defined as the buffer size that producers may send without consumers having consumed them before producers must stop producing.
 
-On a 
+On a Linux platform, the execution command will follow the form as below:
+```
+./server <T> <B> <P> <C> <P_t parms> <R_s parms> <C_t1 parms> <C_t2 parms> <p_i>
+```
+where \<T> is the amount of time for which the system should execute, in sexonds, \<B> is a parameter specifying the size (in bytes) of the shared memory space/shared message-queue size, \<P> is the number of producers, \<C> is the number of consumers, \<P_t parms> is the parmeters related to the probabiity distribution for the random time *`Pt`* that the producers must wait between request productions, \<R_s parms> is the parameters related to the probability distribution of the request size, \<C_t1 parms> is the parmeters related to the probabiity distribution for the random time *`Ct1`* that the consumers take with probability *`p_i`*, \<C_t2 parms> is the parmeters related to the probabiity distribution for the random time *`Ct2`* that the consumers take with probability *`1-p_i`*, and \<p_i> is the probability *`p_i`*.
 
 Finally, for given parameters, the ideal number of producers and consumers needs to be determined. The ideal will be that number for which the most number of requests are processed, with fewest blocked producers.
-
-
 
 ## Design choices
 
