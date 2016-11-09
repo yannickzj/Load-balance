@@ -64,7 +64,7 @@ Since communication via threads is generally more efficient than that via proces
 <br/>Figure1. Average number of processed requests per second for both approaches
 </p>
 
-## Average producer blocked information
+### Average producer blocked information
 
 For both two approaches(Figure2), the producers are rarely blocked as the balance factor is less than 1.0. However, when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) grows greater than 1.0, the producers are frequently blocked. Therefore, an equilibrium point can be observed when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) =1.0, where the producers are blocked and the consumer are idle for few times and for reasonable little amount of time.
 
@@ -87,7 +87,7 @@ In order to have a better understanding of this equilibrium point, the variation
 <br/>(where lambda_b in the legend is the balance factor)
 </p>
 
-# Conclusions
+## Conclusions
 
 The ideal number of producers and consumers can be determined when the balance factor ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) reach 1.0. At this point, the system can reach an equilibrium full-load state, where the the request quantity in the buffer fluctuates between the upper and lower bound of the buffer size and seldom reaches the “top” or “bottom” of the buffer. Therefore, most number of requests can be processed with fewest blocked producers and idle consumers.
 
