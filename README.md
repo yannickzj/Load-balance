@@ -49,19 +49,43 @@ Additionally, the steady state is chosen from T=\[10,110](s). All the average va
 
 ### Average number of processed requests per second
 
+When ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b)\<1 , the average number of processed requests tends to be
+proportional to the balance factor. While as the producer number keep increasing and the *balance factor* becomes equal to or greater than 1, the average processed request number converges to its maximum expectation, which can be calculated as follows:
+>Assuming that producer blocked time is equal to 0 in the ideal situation, producers take turns to send requests into the buffer in steady state. Since delay time Pt for each producer is a poisson-distributed random variable. For a time interval of 1s, the maximum expected request number will be
+
 <p align="center"><img src="/README/f2.png" width="200"></p>
+
+Since communication via threads is generally more efficient than that via processes, it reasonable that multi-thread transmission can obtain greater processed request numbers per second than the multi-process approach.
 
 <p align="center">
 <br/><img src="/README/qnum.png" width="700">
 <br/>Figure1. Average number of processed requests per second for both approaches
 </p>
 
+## Average producer blocked information
 
-## Average producer blocked and consumer idle information
+For both two approaches(Figure2), the producers are rarely blocked as the balance factor is less than 1.0. However, when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) grows greater than 1.0, the producers are frequently blocked. Therefore, an equilibrium point can be observed when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) =1.0, where the producers are blocked and the consumer are idle for few times and for reasonable little amount of time.
 
-![equation](http://latex.codecogs.com/gif.latex? \\lambda_b=\\frac{P_r}{C_r}=\\frac{P/E(P_t)}{C/[p_iE(C_t1)+(1-p_i)E(C_t2)]})
+<p align="center">
+<br/><img src="/README/blockedTime.png" width="700">
+<br/>Figure2. Average producer blocked time(per second) for both approaches
+</p>
 
-|2000|2010|
-|----|----|
-|50|30|
+In order to have a better understanding of this equilibrium point, the variation of request number in the buffer is observed and presented in Figure 3 and Figure 4. When the balance factor is equal to 1.0, the request quantity fluctuates between the upper and lower bound of the buffer size and seldom reaches the “top” or “bottom” of the buffer; But as the balance factor becomes greater than or less than 1.0, this equilibrium breaks and the request number in the buffer will frequently reach the buffer limits, resulting in blocked producers or idle consumers. This point can also be considered as the system full-load state because extra increase of request rate will lead to significant increase of blocked producers.
+
+<p align="center">
+<br/><img src="/README/timehistory_shm.png" width="700">
+<br/>Figure3. Time-history variation of request number in the buffer for multi-thread approach
+<br/>(where lambda_b in the legend is the balance factor)
+</p>
+
+<p align="center">
+<br/><img src="/README/timehistory_msq.png" width="700">
+<br/>Figure4. Time-history variation of request number in the buffer for multi-process approach
+<br/>(where lambda_b in the legend is the balance factor)
+</p>
+
+# Conclusions
+
+The ideal number of producers and consumers can be determined when the balance factor ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) reach 1.0. At this point, the system can reach an equilibrium full-load state, where the the request quantity in the buffer fluctuates between the upper and lower bound of the buffer size and seldom reaches the “top” or “bottom” of the buffer. Therefore, most number of requests can be processed with fewest blocked producers and idle consumers.
 
