@@ -30,14 +30,19 @@ In order to control the buffer size, the message queue size is explicitly initia
 
 ## Interesting Observations
 
-![equation](http://latex.codecogs.com/gif.latex? \\lambda_b=\\frac{P_r}{C_r}=\\frac{P/E(P_t)}{C/[p_iE(C_t1)+(1-p_i)E(C_t2)]})
+In order to better discuss the program results, a definition of balance factor ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) is given as follows:
 
+<p align="center"><img src="/README/f1.png" width="350"></p>
+
+blabla...
+
+<p align="center"><img src="/README/f2.png" width="350"></p>
 
 <p align="center"><img src="/README/blockedTime.png" width="700"></p>
 
 <p align="center"> Figure1. blabla </p>
 
-
+![equation](http://latex.codecogs.com/gif.latex? \\lambda_b=\\frac{P_r}{C_r}=\\frac{P/E(P_t)}{C/[p_iE(C_t1)+(1-p_i)E(C_t2)]})
 
 |2000|2010|
 |----|----|
