@@ -8,6 +8,8 @@ In this project, it is required to solve the multi-producer/multi-consumer probl
 
 To emulate this, a produce function is defined for the producers to issue a new request for the consumers after a random delay `Pt`. The size of the request to be transmitted to the consumers is `Rs`, which is also randomly distributed. Similarly, a consume function is defined for the consumers to complete the task after a random time period. However, this time period is more complex, which is depending on whether the work requests need IO operations. Therefore, the paremeter `pi` is defined as the probability that the work requires IO. There will be two randomly distributed consumer time values, `Ct1` and `Ct2`, where the first is chosen with probability `pi` and otherwise the second is chosen. In addition, `B` is defined as the buffer size that producers may send without consumers having consumed them before producers must stop producing.
 
+On a 
+
 Finally, for given parameters, the ideal number of producers and consumers needs to be determined. The ideal will be that number for which the most number of requests are processed, with fewest blocked producers.
 
 
@@ -30,17 +32,30 @@ In order to control the buffer size, the message queue size is explicitly initia
 
 ## Interesting Observations
 
-In order to better discuss the program results, a definition of balance factor ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) is given as follows:
+In order to better discuss the program results, a definition of **balance factor** ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) is given as follows:
 
-<p align="center"><img src="/README/f1.png" width="350"></p>
+<p align="center"><img src="/README/f1.png" width="300"></p>
 
-blabla...
+The balance factor reflects the ratio of producing rate *`Pr`* to consuming rate *`Cr`*, where *`E()`* is expectation function of random variables. In current system, *`Pr`* and *`Cr`* are assumed to be proportional to the instance number (*`P`* or *`C`*) divided by the average processing time(*`E(Pr))`* or *`E(Ct1)p_i+(1-p_i)E(Ct2)`*). When *balance factor* is less than 1, it means the rate of processing requests is greater than that of generating and the consumers are averagely more faster than producers in terms of finishing their jobs; while as *balance factor* is greater than 1, the producers tend to be faster. Specifically, the program input parameters are chosen as follows:
+```
+T=120s; B=1024; P=6, 7, 8, 9, 10; C=15; Pt_parm=8ms;
+Rs_parm=10; Ct1_parm=30ms; Ct2_parm=5ms; p_i=0.4
+```
+Thus, the balance factor can be derived from its definition:
+```
+balance factor=0.750, 0.875, 1.000, 1.125, 1.250, when P=6, 7, 8, 9, 10
+```
+Additionally, the steady state is chosen from T=\[10,110](s). All the average values in the following sessions are based on this time period.
 
-<p align="center"><img src="/README/f2.png" width="350"></p>
+### Average number of processed requests per second
 
-<p align="center"><img src="/README/blockedTime.png" width="700"></p>
+<p align="center"><img src="/README/f2.png" width="200"></p>
+
+<p align="center"><img src="/README/qnum.png" width="700" title="Figure1"></p>
 
 <p align="center"> Figure1. blabla </p>
+
+## Average producer blocked and consumer idle information
 
 ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b=\\frac{P_r}{C_r}=\\frac{P/E(P_t)}{C/[p_iE(C_t1)+(1-p_i)E(C_t2)]})
 
