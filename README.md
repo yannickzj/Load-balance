@@ -1,5 +1,5 @@
 # Load balancing simulation
-This is a mini project of a graduate course, which aims to simulate load balancing with nulti-producer/multi-consumer systems using the following approaches: 
+This is a mini project of a graduate course, which aims to simulate load balancing with multi-producer/multi-consumer systems using the following approaches: 
 + threads and shared memory;
 + processes and message passing.
 
@@ -51,9 +51,11 @@ Additionally, the steady state is chosen from T=\[10,110](s). All the average va
 
 <p align="center"><img src="/README/f2.png" width="200"></p>
 
-<p align="center"><img src="/README/qnum.png" width="700" title="Figure1"></p>
+<p align="center">
+<br/><img src="/README/qnum.png" width="700">
+<br/>Figure1. Average number of processed requests per second for both approaches
+</p>
 
-<p align="center"> Figure1. blabla </p>
 
 ## Average producer blocked and consumer idle information
 
