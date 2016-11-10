@@ -1,7 +1,7 @@
 # Load balance
 This is a mini project of a graduate course, which aims to simulate load balancing with multi-producer/multi-consumer systems using the following approaches: 
 + threads and shared memory;
-+ processes and message passing.
++ processes and message queue.
 
 ## Project Requirements
 In this project, it is required to solve the multi-producer/multi-consumer problem with a bounded buffer using the above approaches. In the context of a typical software server, the producers are considered as being entities that are receivinig requests and consumers are thought of as entities that will process the request and generate a reply.
