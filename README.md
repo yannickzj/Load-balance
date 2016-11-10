@@ -1,4 +1,4 @@
-# Load balancing simulation
+# Load balance
 This is a mini project of a graduate course, which aims to simulate load balancing with multi-producer/multi-consumer systems using the following approaches: 
 + threads and shared memory;
 + processes and message passing.
