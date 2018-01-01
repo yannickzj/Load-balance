@@ -51,7 +51,7 @@ Additionally, the steady state is chosen from T = \[10,110](s). All the average 
 
 ### Average number of processed requests per second
 
-When ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b)\<1 , the average number of processed requests tends to be
+When `lambda_b`\<1 , the average number of processed requests tends to be
 proportional to *balance factor*. While as the producer number keep increasing and the *balance factor* becomes equal to or greater than 1, the average processed request number converges to its maximum expectation, which can be calculated as follows:
 
 >Assuming that producer blocked time is equal to 0 in the ideal situation, producers take turns to send requests into the buffer in steady state. Since delay time `P_t` for each producer is a poisson-distributed random variable. For a time interval of 1s, the maximum expected request number will be
@@ -67,7 +67,7 @@ Since communication via threads is generally more efficient than that via proces
 
 ### Average producer blocked information
 
-For both two approaches(Figure2), the producers are rarely blocked as the balance factor is less than 1.0. However, when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) grows greater than 1.0, the producers are frequently blocked. Therefore, an equilibrium point can be observed when ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) =1.0, where the producers are blocked and the consumer are idle for few times and for reasonable little amount of time.
+For both two approaches(Figure2), the producers are rarely blocked as the balance factor is less than 1.0. However, when `lambda_b` grows greater than 1.0, the producers are frequently blocked. Therefore, an equilibrium point can be observed when `lambda_b` =1.0, where the producers are blocked and the consumer are idle for few times and for reasonable little amount of time.
 
 <p align="center">
 <br/><img src="/README/blockedTime.png" width="600">
@@ -90,5 +90,5 @@ In order to have a better understanding of this equilibrium point, the variation
 
 ## Conclusions
 
-The ideal number of producers and consumers can be determined when the balance factor ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) is equal to 1.0. At this point, the system can reach an equilibrium full-load state, where the the request quantity in the buffer fluctuates between the upper and lower bound of the buffer size and seldom reaches the “top” or “bottom” of the buffer. Therefore, most number of requests can be processed with fewest blocked producers and fewest idle consumers.
+The ideal number of producers and consumers can be determined when the balance factor `lambda_b` is equal to 1.0. At this point, the system can reach an equilibrium full-load state, where the the request quantity in the buffer fluctuates between the upper and lower bound of the buffer size and seldom reaches the “top” or “bottom” of the buffer. Therefore, most number of requests can be processed with fewest blocked producers and fewest idle consumers.
 
