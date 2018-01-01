@@ -34,7 +34,7 @@ In order to control the buffer size, the message queue size is explicitly initia
 
 ## Interesting Observations
 
-In order to better discuss the program results, a definition of **balance factor** ![equation](http://latex.codecogs.com/gif.latex? \\lambda_b) is given as follows:
+In order to better discuss the program results, a definition of **balance factor** `lambda_b` is given as follows:
 
 <p align="center"><img src="/README/f1.png" width="300"></p>
 
